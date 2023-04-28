@@ -25,15 +25,27 @@ console.log(smoothie2("pineapple"));
 function smoothieMachine(...ingredients) {
   let str = "I'm having a smoothie with"
   return function (...ingredients2) {
-    const milk = ingredients.join(" and ");
-    const second = ingredients2.join(' and ');
-    const bothIngredients = [...ingredients, ...ingredients2];
-    const ingredientstr = bothIngredients.join(' and ');
-    str += " " + milk + "and " + second;
-    return str;
+    const milk = ingredients.map(el => el + ' and').join(' ');
+    const second = ingredients2.map(el => el + ' and').join(' ');
+    str += " " + milk + second ;
+    return str.slice(0, str.length -4);
   }
 }
 
+
+
+let smoothie1 = smoothieMachine();
+
+console.log(smoothie1("milk"));
+// prints "I'm having a smoothie with milk"
+console.log(smoothie1("kale", "spinach"));
+// prints "I'm having a smoothie with milk and kale and spinach"
+console.log(smoothie1("honey", "pears", "berries"));
+// prints "I'm having a smoothie with milk and kale and spinach and honey and pears and berries"
+
+let smoothie2 = smoothieMachine("apples", "bananas", "berries");
+console.log(smoothie2("pineapple"));
+// prints "I'm having a smoothie with apples and bananas and berries and pineapple"
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
