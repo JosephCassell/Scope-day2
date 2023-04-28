@@ -15,10 +15,14 @@ divideByThree(30); // returns 10
 const  divideByFive = dynamicDivide(5);
 divideByFive(50); // returns 10
 
-
+return function ()
 ***********************************************************************/
 
-// Your code here
+function dynamicDivide(divisior) {
+  return function (number) {
+    return number / divisior;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
